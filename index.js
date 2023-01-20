@@ -11,6 +11,12 @@ const PORT = 3030;
 
 const server = express();
 
+// Transforma el contenido o cuerpo de las peticiones POST (req.body)
+// Convierte cuando enviamos un post con json al servidor
+server.use(express.json());
+// Los POST de formulario llegaran como url.encode y hay que transformalas
+server.use(express.urlencoded({extended: true}));
+
 
 server.use("/", indexRoutes);
 server.use("/flights", flightRoutes);

@@ -5,7 +5,7 @@ const flightSchema = mongoose.Schema (
         // Una solicitud GET a la URL "AgencyTravelPandemicAirs/flight/AA123" podría devolver la información completa del vuelo AA123.
         number: {
             type: String,
-            require: true,
+            require: [true, "Cada vuelo debe de tener un número único"],
             unique: true,
         },
 
