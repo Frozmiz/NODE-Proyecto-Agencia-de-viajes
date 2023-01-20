@@ -1,6 +1,9 @@
+
+// CONFIGURACIÓN CONEXIÓN CON BASE DE DATOS MONGO ATLAS
+
 const mongoose = require("mongoose");
 
-const DB_URL = "mongodb+srv://admin:admin@cluster0.xnwdy8i.mongodb.net/agencyTravelPandemicAirs"
+const DB_URL = "mongodb+srv://admin:admin@cluster0.xnwdy8i.mongodb.net/AgencyTravelPandemicAirs"
 
 const connectDB = async() => {
     try {
