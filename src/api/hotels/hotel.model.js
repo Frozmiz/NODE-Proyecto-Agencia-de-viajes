@@ -2,20 +2,18 @@ const mongoose = require("mongoose");
 
 const hotelSchema = mongoose.Schema (
     {
-        // Una solicitud GET a la URL "AgencyTravelPandemicAirs/flight/AA123" podría devolver la información completa del vuelo AA123.
         name: {
-            name: String,
+            type: String,
             require: true,
             unique: true,
         },
 
         starts: {
-            name: String,
-            require: true,
+            type: Number,
         },
 
         city: {
-            name: String,
+            type: String,
             
         },
 
@@ -24,7 +22,7 @@ const hotelSchema = mongoose.Schema (
         },
 
         mail: {
-            type: String, //UNIX format
+            type: String,
             require: true,
             unique: true,
         },
