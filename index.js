@@ -7,6 +7,7 @@ db.connectDB();
 const indexRoutes = require("./src/api/index/index.routes");
 const flightRoutes = require("./src/api/flights/flight.routes");
 const hotelRoutes = require("./src/api/hotels/hotel.routes");
+const bookingsRoutes = require("./src/api/bookings/booking.routes");
 
 const PORT = 3030;
 
@@ -22,6 +23,8 @@ server.use(express.urlencoded({extended: true}));
 server.use("/", indexRoutes);
 server.use("/flights", flightRoutes);
 server.use("/hotels", hotelRoutes);
+server.use("/bookings", bookingsRoutes);
+
 
 server.listen(PORT, () => {
     console.log(`Server listening on http://localhost:${PORT}`);
