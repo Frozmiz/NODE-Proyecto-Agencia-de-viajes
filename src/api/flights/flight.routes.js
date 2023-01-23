@@ -14,7 +14,7 @@ router.get("/:id", controller.getById);
 router.post("/create", controller.createPost);
 
 // ruta /flights/edit/xxxxxxx
-router.post("/edit/:id", controller.editPut);
+router.put("/edit/:id", controller.editPut);
 
 // ruta /flights/delete/xxxxxxx
 router.delete("/delete/:id", controller.deleteFlight);

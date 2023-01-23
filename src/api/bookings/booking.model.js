@@ -4,7 +4,7 @@ const bookingSchema = mongoose.Schema (
     {
         flight: {
             type: mongoose.Types.ObjectId,
-            ref: "fligts",
+            ref: "flights",
         },
         
         hotel: {
@@ -14,8 +14,11 @@ const bookingSchema = mongoose.Schema (
 
         date: {
             type: String,
-        }
+        },
 
+        price: {
+            type: Number,
+        }
     
 
     }, 

@@ -14,14 +14,24 @@ const flightSchema = mongoose.Schema (
             require: true,
         },
 
-        origin: {
+        countryOrigin: {
             type: String,
             
         },
 
-        destiny: {
+        cityDestiny: {
             type: String,
             
+        },
+
+        countryDestiny: {
+            type: String,
+            
+        },
+
+        cityDestiny: {
+            type: String,
+
         },
 
         schedule: {

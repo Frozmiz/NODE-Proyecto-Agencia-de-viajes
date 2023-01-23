@@ -8,5 +8,6 @@ const router = express.Router();
 router.get("/", controller.indexGet);
 router.post("/create", controller.createPost);
 router.put("/edit/:id", controller.editPut);
+router.delete("/delete/:id", controller.deleteBooking);
 
 module.exports= router;
