@@ -1,16 +1,16 @@
 const passport = require("passport");
 
-
 const registerPost = (req, res, next) => {
     try {
-        // AUTENTICACIÓN
         const done = (error, user) => {
-            if(error) return next(error);
-            return res.status(201).json(user);
+            req.logIn(user, (error) => {
+                if (error) return next(error);
+                console.log("Hasta aqui llega por lo menos");
+                return res.status(201).json(user);
+            });
         };
 
         passport.authenticate("registrito", done)(req);
-
     } catch (error) {
         return next(error);
     }
@@ -19,12 +19,45 @@ const registerPost = (req, res, next) => {
 const loginPost = (req, res, next) => {
     try {
         const done = (error, user) => {
-        if(error) return next(error);
-        return res.status(201).json(user);
+            if (error) return next(error);
+            req.logIn(user, (error) => {
+                if (error) return next(error);
+
+                return res.status(201).json(user);
+            });
         };
 
         passport.authenticate("super-login", done)(req);
-        
+    } catch (error) {
+        return next(error);
+    }
+};
+
+const logoutPost = async (req, res, next) => {
+    try {
+        const logoutUser = (error) => {
+            if (error) return next(error);
+
+            req.session.destroy(() => {
+                res.clearCookie("connect.sid");
+                return res.status(200).json("Te has deslogueado correctamente. Hasta pronto!");
+            });
+        };
+
+        await req.logout(logoutUser);
+    } catch (error) {
+        return next(error);
+    }
+};
+
+const checkSessionGet = (req, res, next) => {
+    try {
+        if(!req.user) {
+            return res.status(200).json(null);
+        }
+        const userWithoutPass = req.user.toObject();
+        Reflect.deleteProperty(userWithoutPass, 'password');
+        return res.status(200).json(userWithoutPass);
     } catch (error) {
         return next(error);
     }
@@ -33,4 +66,6 @@ const loginPost = (req, res, next) => {
 module.exports = {
     registerPost,
     loginPost,
-}
+    logoutPost,
+    checkSessionGet,
+};

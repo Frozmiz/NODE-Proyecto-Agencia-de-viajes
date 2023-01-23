@@ -2,7 +2,7 @@ const Booking = require("./booking.model");
 
 const indexGet = async (req, res, next) => {
     try {
-        const allBookings = await Booking.find().populate("flight").populate("hotel"); 
+        const allBookings = await Booking.find().populate({path: "flight", select: {_id:0}}).populate({path: "hotel", select: {_id:0}}); 
         //.populate > trae todos los campos del elemento de otra colección que queremos obtener.
         // Podemos poner tantos .populates como campos tengas.
         return res.status(200).json(allBookings);
